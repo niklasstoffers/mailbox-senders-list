@@ -1,0 +1,6 @@
+host: ""
+port: 993
+mailbox: "INBOX"
+username: ""
+password: ""
+outfile: "out.txt"
