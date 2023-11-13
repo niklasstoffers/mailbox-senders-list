@@ -27,8 +27,11 @@ with open("config.yaml") as f:
                 sender_header = maildata[0][1].decode("utf-8")
                 sender_reg = re.search('([a-zA-Z0-9+._-]+@[a-zA-Z0-9._-]+\.[a-zA-Z0-9_-]+)', sender_header)
 
-                sender_mail = sender_reg.group(1)
-                senders.add(sender_mail)
+                if sender_reg is None:
+                    print(f"Couldn't extract sender email address from IMAP header field \"{sender_header}\"")
+                else:
+                    sender_mail = sender_reg.group(1)
+                    senders.add(sender_mail)
 
                 bar.update(current_id)
                 current_id += 1
